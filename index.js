@@ -2,8 +2,18 @@ const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
 const admin = require("firebase-admin");
 require("dotenv").config();
 
-// 1. Firebase Realtime Database Initialization
-const serviceAccount = require("./serviceAccountKey.json");
+let serviceAccount;
+
+if (process.env.FIREBASE_SERVICE_ACCOUNT_BASE64) {
+  // Зчитування з ENV на хостингу (Discloud)
+  const decodedJson = Buffer.from(
+    process.env.FIREBASE_SERVICE_ACCOUNT_BASE64,
+    "base64",
+  ).toString("utf-8");
+  serviceAccount = JSON.parse(decodedJson);
+} else {
+  serviceAccount = require("./serviceAccountKey.json");
+}
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
