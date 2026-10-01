@@ -30,6 +30,11 @@ const commands = [
     .setName("top")
     .setDescription("Show Iron Gates PvP leaderboard"),
 
+  // Command /ally
+  new SlashCommandBuilder()
+    .setName("ally")
+    .setDescription("Show current alliance roster image"),
+
   // Command /help
   new SlashCommandBuilder()
     .setName("help")
@@ -42,7 +47,6 @@ const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
   try {
     console.log("⏳ Registering Slash commands globally...");
 
-    // Registers commands globally for all servers where the bot is invited
     await rest.put(Routes.applicationCommands(process.env.CLIENT_ID), {
       body: commands,
     });
