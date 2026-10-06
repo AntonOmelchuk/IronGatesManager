@@ -12,12 +12,6 @@ const commands = [
         .setDescription("New PvP count")
         .setRequired(true)
         .setMinValue(0),
-    )
-    .addUserOption((option) =>
-      option
-        .setName("target")
-        .setDescription("Target member (optional for Officers / PLs)")
-        .setRequired(false),
     ),
 
   // Command /event

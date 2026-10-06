@@ -392,8 +392,7 @@ client.on("interactionCreate", async (interaction) => {
           name: "⚔️ `/pvp [count] [target]`",
           value:
             "Update PvP score in the database.\n" +
-            "• `count` *(required)*: Your new total PvP count.\n" +
-            "• `target` *(optional)*: Mention another member to update their score (for Officers / PLs).",
+            "• `count` *(required)*: Your new total PvP count.",
         },
         {
           name: "🛡️ `/event`",
@@ -437,12 +436,6 @@ const commands = [
         .setDescription("New PvP count")
         .setRequired(true)
         .setMinValue(0),
-    )
-    .addUserOption((option) =>
-      option
-        .setName("target")
-        .setDescription("Target member (optional for Officers / PLs)")
-        .setRequired(false),
     ),
 
   // Command /event
